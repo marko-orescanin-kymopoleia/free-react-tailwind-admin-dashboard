@@ -9,6 +9,7 @@ import Alerts from "./pages/UiElements/Alerts";
 import Badges from "./pages/UiElements/Badges";
 import Avatars from "./pages/UiElements/Avatars";
 import Buttons from "./pages/UiElements/Buttons";
+import NewComponents from "./pages/UiElements/NewComponents";
 import LineChart from "./pages/Charts/LineChart";
 import BarChart from "./pages/Charts/BarChart";
 import Calendar from "./pages/Calendar";
@@ -18,10 +19,11 @@ import Blank from "./pages/Blank";
 import AppLayout from "./layout/AppLayout";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
+import { ToastProvider, ToastContainer } from "./components/ui/toast";
 
 export default function App() {
   return (
-    <>
+    <ToastProvider>
       <Router>
         <ScrollToTop />
         <Routes>
@@ -47,6 +49,7 @@ export default function App() {
             <Route path="/buttons" element={<Buttons />} />
             <Route path="/images" element={<Images />} />
             <Route path="/videos" element={<Videos />} />
+            <Route path="/new-components" element={<NewComponents />} />
 
             {/* Charts */}
             <Route path="/line-chart" element={<LineChart />} />
@@ -61,6 +64,7 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
-    </>
+      <ToastContainer />
+    </ToastProvider>
   );
 }
