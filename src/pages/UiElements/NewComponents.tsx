@@ -136,7 +136,7 @@ export default function NewComponents() {
   return (
     <div>
       <PageMeta
-        title="New UI Components | TailAdmin - React.js Admin Dashboard Template"
+        title="New UI Components | Cyber Sentinel - Security Dashboard Platform"
         description="Showcase of new UI components including spinners, toasts, dropdowns, data tables, and progress indicators"
       />
       <PageBreadcrumb pageTitle="New UI Components" />

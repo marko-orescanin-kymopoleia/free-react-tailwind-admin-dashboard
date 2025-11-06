@@ -1,39 +1,39 @@
-import EcommerceMetrics from "../../components/ecommerce/EcommerceMetrics";
-import MonthlySalesChart from "../../components/ecommerce/MonthlySalesChart";
-import StatisticsChart from "../../components/ecommerce/StatisticsChart";
-import MonthlyTarget from "../../components/ecommerce/MonthlyTarget";
-import RecentOrders from "../../components/ecommerce/RecentOrders";
-import DemographicCard from "../../components/ecommerce/DemographicCard";
+import SecurityMetrics from "../../components/security/SecurityMetrics";
+import VulnerabilityTrendChart from "../../components/security/VulnerabilityTrendChart";
+import ThreatDistributionChart from "../../components/security/ThreatDistributionChart";
+import ThreatSeverityCard from "../../components/security/ThreatSeverityCard";
+import RecentScans from "../../components/security/RecentScans";
+import ThreatMapCard from "../../components/security/ThreatMapCard";
 import PageMeta from "../../components/common/PageMeta";
 
 export default function Home() {
   return (
     <>
       <PageMeta
-        title="React.js Ecommerce Dashboard | TailAdmin - React.js Admin Dashboard Template"
-        description="This is React.js Ecommerce Dashboard page for TailAdmin - React.js Tailwind CSS Admin Dashboard Template"
+        title="Security Dashboard | Cyber Sentinel - Vulnerability Management Platform"
+        description="Comprehensive security dashboard for vulnerability scanning and threat monitoring"
       />
       <div className="grid grid-cols-12 gap-4 md:gap-6">
         <div className="col-span-12 space-y-6 xl:col-span-7">
-          <EcommerceMetrics />
+          <SecurityMetrics />
 
-          <MonthlySalesChart />
+          <VulnerabilityTrendChart />
         </div>
 
         <div className="col-span-12 xl:col-span-5">
-          <MonthlyTarget />
+          <ThreatSeverityCard />
         </div>
 
         <div className="col-span-12">
-          <StatisticsChart />
+          <ThreatDistributionChart />
         </div>
 
         <div className="col-span-12 xl:col-span-5">
-          <DemographicCard />
+          <ThreatMapCard />
         </div>
 
         <div className="col-span-12 xl:col-span-7">
-          <RecentOrders />
+          <RecentScans />
         </div>
       </div>
     </>
