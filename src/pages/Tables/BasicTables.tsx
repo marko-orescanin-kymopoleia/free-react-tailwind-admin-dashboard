@@ -7,12 +7,12 @@ export default function BasicTables() {
   return (
     <>
       <PageMeta
-        title="React.js Basic Tables Dashboard | Cyber Sentinel - Next.js Admin Dashboard Template"
-        description="This is React.js Basic Tables Dashboard page for Cyber Sentinel - Tailwind CSS Admin Dashboard Template"
+        title="Security Scan Tables | Cyber Sentinel - Security Dashboard Platform"
+        description="View security scan results and analyst assignments"
       />
-      <PageBreadcrumb pageTitle="Basic Tables" />
+      <PageBreadcrumb pageTitle="Security Scans" />
       <div className="space-y-6">
-        <ComponentCard title="Basic Table 1">
+        <ComponentCard title="Active Security Scans">
           <BasicTableOne />
         </ComponentCard>
       </div>

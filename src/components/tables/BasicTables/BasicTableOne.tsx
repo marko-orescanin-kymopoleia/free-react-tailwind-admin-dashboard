@@ -5,107 +5,89 @@ import {
   TableHeader,
   TableRow,
 } from "../../ui/table";
-
 import Badge from "../../ui/badge/Badge";
+import UserAvatar from "../../common/UserAvatar";
 
-interface Order {
+interface SecurityScan {
   id: number;
-  user: {
-    image: string;
+  analyst: {
     name: string;
     role: string;
   };
   projectName: string;
   team: {
-    images: string[];
+    names: string[];
   };
   status: string;
-  budget: string;
+  findings: string;
 }
 
-// Define the table data using the interface
-const tableData: Order[] = [
+// Define the table data with cybersecurity scans
+const tableData: SecurityScan[] = [
   {
     id: 1,
-    user: {
-      image: "/images/user/user-17.jpg",
-      name: "Lindsey Curtis",
-      role: "Web Designer",
+    analyst: {
+      name: "Analyst 1",
+      role: "Security Researcher",
     },
-    projectName: "Agency Website",
+    projectName: "Production Docker Scan",
     team: {
-      images: [
-        "/images/user/user-22.jpg",
-        "/images/user/user-23.jpg",
-        "/images/user/user-24.jpg",
-      ],
+      names: ["Analyst 2", "Analyst 3", "Analyst 4"],
     },
-    budget: "3.9K",
-    status: "Active",
+    findings: "23 Critical",
+    status: "Completed",
   },
   {
     id: 2,
-    user: {
-      image: "/images/user/user-18.jpg",
-      name: "Kaiya George",
-      role: "Project Manager",
+    analyst: {
+      name: "Analyst 2",
+      role: "Penetration Tester",
     },
-    projectName: "Technology",
+    projectName: "Web Server Port Scan",
     team: {
-      images: ["/images/user/user-25.jpg", "/images/user/user-26.jpg"],
+      names: ["Analyst 5", "Analyst 6"],
     },
-    budget: "24.9K",
-    status: "Pending",
+    findings: "8 High",
+    status: "In Progress",
   },
   {
     id: 3,
-    user: {
-      image: "/images/user/user-17.jpg",
-      name: "Zain Geidt",
-      role: "Content Writing",
+    analyst: {
+      name: "Analyst 3",
+      role: "Vulnerability Analyst",
     },
-    projectName: "Blog Writing",
+    projectName: "API Gateway Assessment",
     team: {
-      images: ["/images/user/user-27.jpg"],
+      names: ["Analyst 1"],
     },
-    budget: "12.7K",
-    status: "Active",
+    findings: "15 Medium",
+    status: "Completed",
   },
   {
     id: 4,
-    user: {
-      image: "/images/user/user-20.jpg",
-      name: "Abram Schleifer",
-      role: "Digital Marketer",
+    analyst: {
+      name: "Analyst 4",
+      role: "Security Auditor",
     },
-    projectName: "Social Media",
+    projectName: "Database Security Audit",
     team: {
-      images: [
-        "/images/user/user-28.jpg",
-        "/images/user/user-29.jpg",
-        "/images/user/user-30.jpg",
-      ],
+      names: ["Analyst 7", "Analyst 8", "Analyst 9"],
     },
-    budget: "2.8K",
-    status: "Cancel",
+    findings: "42 Low",
+    status: "Failed",
   },
   {
     id: 5,
-    user: {
-      image: "/images/user/user-21.jpg",
-      name: "Carla George",
-      role: "Front-end Developer",
+    analyst: {
+      name: "Analyst 5",
+      role: "Network Analyst",
     },
-    projectName: "Website",
+    projectName: "Infrastructure Scan",
     team: {
-      images: [
-        "/images/user/user-31.jpg",
-        "/images/user/user-32.jpg",
-        "/images/user/user-33.jpg",
-      ],
+      names: ["Analyst 10", "Analyst 2", "Analyst 3"],
     },
-    budget: "4.5K",
-    status: "Active",
+    findings: "5 Critical",
+    status: "Completed",
   },
 ];
 
@@ -121,13 +103,13 @@ export default function BasicTableOne() {
                 isHeader
                 className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
               >
-                User
+                Analyst
               </TableCell>
               <TableCell
                 isHeader
                 className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
               >
-                Project Name
+                Scan Project
               </TableCell>
               <TableCell
                 isHeader
@@ -145,52 +127,40 @@ export default function BasicTableOne() {
                 isHeader
                 className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
               >
-                Budget
+                Findings
               </TableCell>
             </TableRow>
           </TableHeader>
 
           {/* Table Body */}
           <TableBody className="divide-y divide-gray-100 dark:divide-white/[0.05]">
-            {tableData.map((order) => (
-              <TableRow key={order.id}>
+            {tableData.map((scan) => (
+              <TableRow key={scan.id}>
                 <TableCell className="px-5 py-4 sm:px-6 text-start">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 overflow-hidden rounded-full">
-                      <img
-                        width={40}
-                        height={40}
-                        src={order.user.image}
-                        alt={order.user.name}
-                      />
-                    </div>
+                    <UserAvatar name={scan.analyst.name} size="sm" />
                     <div>
                       <span className="block font-medium text-gray-800 text-theme-sm dark:text-white/90">
-                        {order.user.name}
+                        {scan.analyst.name}
                       </span>
                       <span className="block text-gray-500 text-theme-xs dark:text-gray-400">
-                        {order.user.role}
+                        {scan.analyst.role}
                       </span>
                     </div>
                   </div>
                 </TableCell>
                 <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                  {order.projectName}
+                  {scan.projectName}
                 </TableCell>
                 <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                   <div className="flex -space-x-2">
-                    {order.team.images.map((teamImage, index) => (
+                    {scan.team.names.map((name, index) => (
                       <div
                         key={index}
-                        className="w-6 h-6 overflow-hidden border-2 border-white rounded-full dark:border-gray-900"
+                        className="border-2 border-white rounded-full dark:border-gray-900"
+                        title={name}
                       >
-                        <img
-                          width={24}
-                          height={24}
-                          src={teamImage}
-                          alt={`Team member ${index + 1}`}
-                          className="w-full size-6"
-                        />
+                        <UserAvatar name={name} size="sm" className="h-6 w-6 text-xs" />
                       </div>
                     ))}
                   </div>
@@ -199,18 +169,28 @@ export default function BasicTableOne() {
                   <Badge
                     size="sm"
                     color={
-                      order.status === "Active"
+                      scan.status === "Completed"
                         ? "success"
-                        : order.status === "Pending"
+                        : scan.status === "In Progress"
                         ? "warning"
                         : "error"
                     }
                   >
-                    {order.status}
+                    {scan.status}
                   </Badge>
                 </TableCell>
                 <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-                  {order.budget}
+                  <span className={`font-semibold ${
+                    scan.findings.includes("Critical")
+                      ? "text-error-600 dark:text-error-400"
+                      : scan.findings.includes("High")
+                      ? "text-warning-600 dark:text-warning-400"
+                      : scan.findings.includes("Medium")
+                      ? "text-blue-600 dark:text-blue-400"
+                      : "text-gray-600 dark:text-gray-400"
+                  }`}>
+                    {scan.findings}
+                  </span>
                 </TableCell>
               </TableRow>
             ))}
